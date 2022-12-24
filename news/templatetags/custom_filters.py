@@ -14,6 +14,6 @@ def censorship(value):
 
     for w in value.split():
         if w.lower() == word:
-            value = value.replace(w,f"{w[0]}{'*' * (len(w) - 1)}")
+            value = value.replace(w, f"{w[0]}{'*' * (len(w) - 1)}")
 
     return value
