@@ -1,0 +1,34 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+Posts
+{% endblock title %}
+
+{% block content %}
+<h1>All posts</h1>
+{% if posts %}
+    <h3>Total posts: {{ posts|length }}</h3>
+    <table>
+    <tr>
+        <td>Title</td>
+        <td>Date</td>
+        <td>Description</td>
+    </tr>
+
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.title|censorship }}</td>
+        <td>{{ post.created_at|date:'d M Y'  }}</td>
+        <td>{{ post.text|truncatechars:20|censorship }}</td>
+    </tr>
+    {% endfor %}
+
+    </table>
+
+{% else %}
+<h2>No topics available</h2>
+
+{% endif %}
+{% endblock content %}
